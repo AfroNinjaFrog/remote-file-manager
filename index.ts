@@ -1,11 +1,15 @@
 import e from "express";
 import {Api} from "./api/api";
+import {AppInit} from "./generic/app-init";
 
 export class RemoteFileManager {
     public static init() {
         const app: e.Application = e();
+
+        AppInit.appInit(app);
         Api.init(app);
-        app.listen(3000, () => console.log('server is listening on port 3000!!!'));
+        AppInit.appListen(app);
     }
 }
+
 RemoteFileManager.init();
